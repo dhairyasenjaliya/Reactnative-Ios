@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.iosdemo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
       android:name=".MainApplication"
@@ -13,6 +15,7 @@
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
+        android:launchMode="singleTop"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize">
         <intent-filter>
@@ -24,6 +27,44 @@
       <meta-data
      android:name="com.google.android.geo.API_KEY"
      android:value="AIzaSyBpcI5Wkv3fpXwVaJPkX5mltXXCWaWL3M8"/>
+
+
+           <service android:name="io.invertase.firebase.messaging.RNFirebaseMessagingService">
+        <intent-filter>
+          <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+      </service>
+
+     
+      
+      <service android:name="io.invertase.firebase.messaging.RNFirebaseBackgroundMessagingService" />
+
+
+      <service android:name=".java.MyFirebaseMessagingService" >
+        <intent-filter>
+          <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+      </service> 
+
+
+<!-- <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/ic_stat_ic_notification" /> -->
+<!-- <meta-data android:name="com.google.firebase.messaging.default_notification_color" color="white" /> -->
+
+
+
+   <receiver android:name="io.invertase.firebase.notifications.RNFirebaseNotificationReceiver"/>
+
+    <receiver android:enabled="true" android:exported="true" android:name="io.invertase.firebase.notifications.RNFirebaseNotificationsRebootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </receiver>
+
+
+    
     </application>
+
 
 </manifest>
