@@ -43,6 +43,9 @@ target 'IOSDemo' do
     pod 'Firebase/Core' 
     pod 'Firebase/Messaging' 
 
+    pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+    pod 'GoogleSignIn'
+
 end
 post_install do |installer|
     installer.pods_project.targets.each do |target|

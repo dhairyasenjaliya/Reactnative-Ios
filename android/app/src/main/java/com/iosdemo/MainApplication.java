@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage; // <-- Add this line
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 
 import java.util.Arrays;
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
             new MapsPackage(),
             new RNFirebasePackage(),
             new RNFirebaseNotificationsPackage(),
-            new RNFirebaseMessagingPackage()
+            new RNFirebaseMessagingPackage(),
+            new RNGoogleSigninPackage()
       );
     }
 

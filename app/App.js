@@ -4,11 +4,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './Home/home';
 import Map from './Map/map';
+import Profile from './Profile/profile'
 
 
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Map: Map,
+  Profile: Profile
 },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -21,8 +23,12 @@ const TabNavigator = createBottomTabNavigator({
           // Sometimes we want to add badges to some icons. 
           // You can check the implementation below.
           // IconComponent = HomeIconWithBadge;
-        } else if (routeName === 'Map') {
+        }
+        else if (routeName === 'Map') {
           iconName = `ios-map`;
+        }
+        else if (routeName === 'Profile') {
+          iconName = `ios-person`;
         }
 
         // You can return any component that you like here!
